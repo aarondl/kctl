@@ -1,11 +1,15 @@
-machine:
-  ROOTPATH: /home/ubuntu/go/src/github.com/aarondl/kctl
-
 dependencies:
-  pre: 
+  pre:
     - go get github.com/kardianos/govendor
   override:
-    - cd $ROOTPATH && govendor sync
+    - mkdir -p ~/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}
+    - ln -s ${HOME}/${CIRCLE_PROJECT_REPONAME} ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+    - cd ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} && env GOPATH=$GOPATH:$HOME/.go_project/ govendor sync
+
+test:
+  override:
+    - go build -v
+    - cp kctl ${CIRCLE_ARTIFACTS}/
 
 deployment:
   release:
@@ -16,4 +20,5 @@ deployment:
       - mkdir out
       - env GOOS=linux GOARCH=amd64 go build -o dist/kctl-linux-amd64
       - env GOOS=darwin GOARCH=amd64 go build -o dist/kctl-darwin-amd64
-      - ghr -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -replace $(cat VERSION) dist/
+      - cp dist/kctl-linux-amd64 dist/kctl-darwin-amd64 ${CIRCLE_ARTIFACTS}/
+      - ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -replace $(cat VERSION) dist/
