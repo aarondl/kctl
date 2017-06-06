@@ -10,7 +10,7 @@ dependencies:
 
 test:
   override:
-    - go build -v
+    - env GOPATH=$GOPATH:$HOME/.go_project go build -v
     - cp kctl ${CIRCLE_ARTIFACTS}/
 
 deployment:
