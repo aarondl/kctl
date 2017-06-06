@@ -10,7 +10,7 @@ dependencies:
 
 test:
   override:
-    - env GOPATH=$GOPATH:$HOME/.go_project go build -v
+    - cd ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} && env GOPATH=$GOPATH:$HOME/.go_project go build -v
     - cp kctl ${CIRCLE_ARTIFACTS}/
 
 deployment:
