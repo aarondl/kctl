@@ -3,6 +3,8 @@ dependencies:
     - go get github.com/kardianos/govendor
   override:
     - mkdir -p ~/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}
+    # This is a hack so that govendor doesn't break when the workspace dir is missing
+    - sudo mkdir -p /usr/local/go_workspace/src
     - ln -s ${HOME}/${CIRCLE_PROJECT_REPONAME} ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
     - cd ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} && env GOPATH=$GOPATH:$HOME/.go_project/ govendor sync
 
