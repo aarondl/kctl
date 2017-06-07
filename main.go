@@ -103,6 +103,7 @@ func buildArgs(buildCacheFn buildCacheFunction, osArgs []string) ([]string, erro
 	var args []string
 	var tailArgs []string
 	var cache []Resource
+	var colonFound bool
 	getKind := "pods"
 
 	osArgs = osArgs[1:] // Chop off exe name
@@ -122,7 +123,8 @@ func buildArgs(buildCacheFn buildCacheFunction, osArgs []string) ([]string, erro
 				getKind = osArgs[i+1]
 			}
 
-		case strings.IndexByte(a, ':') >= 0:
+		case !colonFound && strings.IndexByte(a, ':') >= 0:
+			colonFound = true
 			if cache == nil {
 				if cache, err = buildCacheFn(getKind); err != nil {
 					return nil, err
