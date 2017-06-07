@@ -111,6 +111,7 @@ func buildArgs(buildCacheFn buildCacheFunction, osArgs []string) ([]string, erro
 		switch {
 		case a == "logs":
 			getKind = "pods"
+			args = append(args, "logs")
 
 		case a == "ssh":
 			args = append(args, "exec", "-it")
