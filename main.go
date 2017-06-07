@@ -102,21 +102,16 @@ func buildArgs(buildCacheFn buildCacheFunction, osArgs []string) ([]string, erro
 	var err error
 	var args []string
 	var tailArgs []string
-	var getKind string
 	var cache []Resource
+	getKind := "pods"
 
 	osArgs = osArgs[1:] // Chop off exe name
 
 	for i, a := range osArgs {
 		switch {
-		case a == "logs":
-			getKind = "pods"
-			args = append(args, "logs")
-
 		case a == "ssh":
 			args = append(args, "exec", "-it")
 			tailArgs = append(getSSHArgs(), "/bin/bash")
-			getKind = "pods"
 
 		case a == ":":
 			args = append(args, "--all-namespaces")
