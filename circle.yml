@@ -23,4 +23,4 @@ deployment:
       - cd ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} && env GOPATH=$GOPATH:$HOME/.go_project GOARCH=amd64 GOOS=linux go build -o dist/kctl-linux-amd64
       - cd ${HOME}/.go_project/src/github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} && env GOPATH=$GOPATH:$HOME/.go_project GOARCH=amd64 GOOS=darwin go build -o dist/kctl-darwin-amd64
       - cp dist/kctl-linux-amd64 dist/kctl-darwin-amd64 ${CIRCLE_ARTIFACTS}/
-      - ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -replace $(cat VERSION) dist/
+      - ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -replace ${CIRCLE_TAG} dist/
