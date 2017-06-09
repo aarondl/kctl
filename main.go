@@ -155,7 +155,7 @@ func buildArgs(buildCacheFn buildCacheFunction, osArgs []string) ([]string, erro
 }
 
 func buildCache(res string) (rs []Resource, err error) {
-	cmd := exec.Command("kubectl", "get", res, "--no-headers", "--all-namespaces")
+	cmd := exec.Command("kubectl", "get", res, "--no-headers", "--all-namespaces", "--show-all")
 	b, err := cmd.Output()
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to get resource %s", res)
