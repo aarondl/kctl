@@ -1,0 +1,9 @@
+github.com/fatih/color v0.0.0-20151111120202-9aae6aaa2231 h1:SJQOrTKavQKN9enteIYsYLMIk4Qz1bs+ayguw0JqiCY=
+github.com/fatih/color v0.0.0-20151111120202-9aae6aaa2231/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
+github.com/mattn/go-colorable v0.0.0-20170221004137-d898aa9fb31c h1:g9q614SX9NjR8nY2rO4q7LOMlnBXX2Nvbg/l+77gOdI=
+github.com/mattn/go-colorable v0.0.0-20170221004137-d898aa9fb31c/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
+github.com/mattn/go-isatty v0.0.0-20151211000621-56b76bdf51f7 h1:owMyzMR4QR+jSdlfkX9jPU3rsby4++j99BfbtgVr6ZY=
+github.com/mattn/go-isatty v0.0.0-20151211000621-56b76bdf51f7/go.mod h1:M+lRXTBqGeGNdLjl/ufCoiOlB5xdOkqRJdNxMWT7Zi4=
+github.com/pkg/errors v0.7.1 h1:0XSZhzhcAUrs2vsv1y5jaxWejlCCgvxI/kBpbRFMZ+o=
+github.com/pkg/errors v0.7.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+golang.org/x/sys v0.0.0-20161214190518-d75a52659825/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
